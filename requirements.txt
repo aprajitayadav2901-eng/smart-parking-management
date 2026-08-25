@@ -1,0 +1,5 @@
+cvzone
+scikit-image
+flask
+flask_sqlalchemy
+ultralytics

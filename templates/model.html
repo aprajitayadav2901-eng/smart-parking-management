@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Model{% endblock %}
+
+{% block content %}
+<div class="container-fluid bg-light p-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg rounded-3 border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h1>Welcome to the Model</h1>
+                </div>
+                <div class="card-body p-4">
+                    <a class="btn btn-outline-primary mb-4 w-100" href="/hero">Go to Home</a>
+
+                    <form id="uploadForm">
+                        <!-- Video Upload Section -->
+                        <div class="form-group mb-4">
+                            <label for="videoUpload" class="form-label fw-bold text-secondary">Upload Video File:</label>
+                            <input type="file" id="videoUpload" name="video_file" class="form-control border-primary">
+                        </div>
+
+                        <!-- Polygon Selection Section -->
+                        <div class="form-group mb-4">
+                            <label for="polygonSelect" class="form-label fw-bold text-secondary">Select Polygon Coordinates:</label>
+                            <select id="polygonSelect" name="polygon_option" class="form-select border-primary">
+                                <option value="carpark_1">Carpark 1</option>
+                                <option value="carpark_2">Carpark 2</option>
+                                <option value="carpark_3">Carpark 3</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="button" class="btn btn-success btn-lg w-50" onclick="uploadAndPredict()">Submit and Predict</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add custom styles for better appearance -->
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        background-color: #ffffff;
+    }
+
+    .card-header {
+        border-bottom: 3px solid #ffc107;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+</style>
+
+<script>
+    function uploadAndPredict() {
+        const videoInput = document.getElementById("videoUpload");
+        const polygonSelect = document.getElementById("polygonSelect");
+
+        if (!videoInput.files.length) {
+            alert("Please upload a video file.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("video_file", videoInput.files[0]);
+        formData.append("polygon_option", polygonSelect.value);
+
+        fetch('http://localhost:5000/predict', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.error) {
+                alert(data.error);
+            } else {
+                alert("Prediction completed: " + JSON.stringify(data));
+            }
+        })
+        .catch(error => console.error('Error during prediction:', error));
+    }
+</script>
+{% endblock %}

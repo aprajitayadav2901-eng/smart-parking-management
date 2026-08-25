@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <style>
+        body {
+            background-image: url("car-image.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .bg-image {
+    background-image: url("https://images.alphacoders.com/236/236601.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-fluid {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.06);
+}
+.display-4{
+font-size: 4rem;
+}
+.move-up {
+    margin-top: -5cm;
+}
+.bg-login-image {
+    background-image: url('../static/3.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container-fluid {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-login {
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-login:hover {
+    transform: scale(1.02);
+}
+
+.move-up-login {
+    margin-top: -3cm;
+}
+.bg-imagel {
+    background-image: url("../static/2.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.cardl {
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.cardl:hover {
+    transform: scale(1.02);
+}
+
+.move-upl {
+    margin-top: -3cm;
+}
+.bg-register-image {
+    background-image: url('../static/1.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-register {
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-register:hover {
+    transform: scale(1.02);
+}
+
+.move-up-register {
+    margin-top: -3cm;
+}
+.bg-model-image {
+    background-image: url('../static/3.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-model {
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-model:hover {
+    transform: scale(1.02);
+}
+
+.btn-animate {
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn-animate:hover {
+    transform: scale(1.1);
+}
+
+    </style>
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>
